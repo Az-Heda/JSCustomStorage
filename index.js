@@ -1,3 +1,4 @@
+const myStorageDefaultExpr = 1000 * 60 * 60 * 24;
 const myStorage = {
     add: function(key, value) {
         if (typeof Storage !== undefined) {
@@ -32,7 +33,7 @@ const myStorage = {
         return null;
     },
     localcookie: {
-        set: function(key, value, expr = 1000 * 60 * 60 * 24) {
+        set: function(key, value, expr = myStorageDefaultExpr) {
             const now = new Date();
             const item = { value: value, expiry: now.getTime() + expr };
             window.localStorage.setItem(key, JSON.stringify(item));
